@@ -99,6 +99,13 @@ btn.addEventListener('click', function () {
       hasil = 'Kaya';
     }
 
-    let hasilFinal = ``;
+    let hasilFinal = `
+    <h1>${hasil}</h1>
+    <h2>${x1}</h2>
+    <h2>${x2}</h2>
+    <h2>${x2}</h2>
+    `;
+
+    container.innerHTML = hasilFinal;
   });
 });
