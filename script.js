@@ -48,7 +48,5 @@ btn.addEventListener('click', function () {
       dataPengeluaran.push(dataPengeluaranEl[i].value);
       dataSm.push(dataSmEl[i].value);
     }
-
-    console.log(dataPenghasilan);
   });
 });
