@@ -1,5 +1,6 @@
 const container = document.querySelector('.container');
-const btn = document.getElementById('submit');
+const btn = document.querySelector('a');
+const loginBox = document.getElementsByClassName('login-box')[0];
 
 btn.addEventListener('click', function () {
   const jumlahData = document.getElementById('jumlahData').value;
@@ -7,33 +8,51 @@ btn.addEventListener('click', function () {
   const x2 = document.getElementById('x2').value;
   const x3 = document.getElementById('x3').value;
   const k = document.getElementById('k').value;
+  loginBox.classList.remove('login-box');
 
-  let formInput = '';
+  let formInput = `<div class="card text-center ">
+  <div class="card-header">
+    Data Latih
+  </div>`;
 
   for (let i = 1; i <= jumlahData; i++) {
-    formInput += `<h1 class="mt-5">Data ${i}</h1>
+    formInput += `<div class="card-body ">
+    <h5 class="">Data ${i}</h5>
     <div class="form-group">
-    <label for="penghasilan">Penghasilannnnnn</label>
-    <input type="input" class="form-control data-penghasilan" id="penghasilan" />
+    
+    <input type="input" class="form-control data-penghasilan" id="penghasilan" placeholder="Penghasilan"  />
   </div>
   <div class="form-group">
-    <label for="aset">Aset</label>
-    <input type="input" class="form-control data-aset" id="aset" />
+    
+    <input type="input" class="form-control data-aset" id="aset"  placeholder="Aset" />
   </div>
   <div class="form-group">
-    <label for="pengeluaran">Pengeluaran</label>
-    <input type="input" class="form-control data-pengeluaran" id="pengeluaran" />
+    
+    <input type="input" class="form-control data-pengeluaran" id="pengeluaran"  placeholder="Pengeluaran" />
   </div>
   <div class="form-group">
-    <label for="">Status Masyarakat</label>
+   
     <select class="form-select data-sm" aria-label="Default select example">
+      <option value="Miskin">Status Masyarakat</option>
       <option value="Miskin">Miskin</option>
       <option value="Sedang">Sedang</option>
       <option value="Kaya">Kaya</option>
     </select>
+    </div>
     </div>`;
   }
-  formInput += `<button class="proses btn btn-primary mt-3">Proses</button>`;
+  formInput += `
+  <div class="card-footer text-muted">
+  2 days ago
+</div>
+</div>
+<a href="#" class="proses">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Submit
+        </a>`;
   container.innerHTML = formInput;
 
   const buttonProses = document.querySelector('.proses');
@@ -85,16 +104,23 @@ btn.addEventListener('click', function () {
     }
 
     let hasil = '';
-    if (miskin > sedang) {
+    // if (miskin > sedang) {
+    //   hasil = 'Miskin';
+    // } else if (miskin > kaya) {
+    //   hasil = 'Miskin';
+    // } else if (sedang > miskin) {
+    //   hasil = 'Sedang';
+    // } else if (sedang > kaya) {
+    //   hasil = 'Sedang';
+    // } else if (kaya > miskin) {
+    //   hasil = 'Kaya';
+    // } else {
+    //   hasil = 'Kaya';
+    // }
+    if (miskin > sedang && miskin > kaya) {
       hasil = 'Miskin';
-    } else if (miskin > kaya) {
-      hasil = 'Miskin';
-    } else if (sedang > miskin) {
+    } else if (sedang > miskin && sedang > kaya) {
       hasil = 'Sedang';
-    } else if (sedang > kaya) {
-      hasil = 'Sedang';
-    } else if (kaya > miskin) {
-      hasil = 'Kaya';
     } else {
       hasil = 'Kaya';
     }
@@ -107,5 +133,6 @@ btn.addEventListener('click', function () {
     `;
 
     container.innerHTML = hasilFinal;
+    console.log(hasilLearning);
   });
 });
