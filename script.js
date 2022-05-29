@@ -42,17 +42,15 @@ btn.addEventListener('click', function () {
     </div>`;
   }
   formInput += `
-  <div class="card-footer text-muted">
-  2 days ago
-</div>
-</div>
-<a href="#" class="proses">
+  <a href="#" class="proses">
           <span></span>
           <span></span>
           <span></span>
           <span></span>
           Submit
-        </a>`;
+        </a>
+</div>
+`;
   container.innerHTML = formInput;
 
   const buttonProses = document.querySelector('.proses');
@@ -124,12 +122,14 @@ btn.addEventListener('click', function () {
     } else {
       hasil = 'Kaya';
     }
+    loginBox.classList.add('login-box');
 
     let hasilFinal = `
-    <h1>${hasil}</h1>
-    <h2>${x1}</h2>
-    <h2>${x2}</h2>
-    <h2>${x2}</h2>
+    <h2>Hasil Learning</h2>
+    <h2>Data Penghasilan: ${x1}</h2>
+    <h2>data Aset       : ${x2}</h2>
+    <h2>data Pengeluaran: ${x3}</h2>
+    <h2>Indikasi : ${hasil}</h2>
     `;
 
     container.innerHTML = hasilFinal;
