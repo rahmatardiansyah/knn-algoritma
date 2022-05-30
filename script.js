@@ -64,6 +64,7 @@ btn.addEventListener('click', function () {
   const dataPengeluaran = [];
   const dataSm = [];
   const dataLearning = [];
+
   buttonProses.addEventListener('click', function () {
     for (let i = 0; i < jumlahData; i++) {
       dataPenghasilan.push(dataPenghasilanEl[i].value);
@@ -71,8 +72,12 @@ btn.addEventListener('click', function () {
       dataPengeluaran.push(dataPengeluaranEl[i].value);
       dataSm.push(dataSmEl[i].value);
     }
+
     for (let i = 0; i < jumlahData; i++) {
       dataLearning.push([
+        dataPenghasilan[i],
+        dataAset[i],
+        dataPengeluaran[i],
         Math.sqrt(
           Math.pow(dataPenghasilan[i] - x1, 2) +
             Math.pow(dataAset[i] - x2, 2) +
@@ -82,21 +87,21 @@ btn.addEventListener('click', function () {
       ]);
     }
 
-    const hasilLearning = [
-      ...dataLearning.sort(function (a, b) {
-        return a[0] - b[0];
-      })
-    ];
+    const hasilLearning = [...dataLearning];
+
+    hasilLearning.sort(function (a, b) {
+      return a[3] - b[3];
+    });
 
     let miskin = 0;
     let sedang = 0;
     let kaya = 0;
     for (let i = 0; i < k; i++) {
-      if (hasilLearning[i][1] == 'Miskin') {
+      if (hasilLearning[i][4] == 'Miskin') {
         miskin++;
-      } else if (hasilLearning[i][1] == 'Sedang') {
+      } else if (hasilLearning[i][4] == 'Sedang') {
         sedang++;
-      } else if (hasilLearning[i][1] == 'Kaya') {
+      } else if (hasilLearning[i][4] == 'Kaya') {
         kaya++;
       }
     }
@@ -131,15 +136,37 @@ btn.addEventListener('click', function () {
     }
     loginBox.classList.add('login-box');
 
-    let hasilFinal = `
+    let hasilFinal = '';
+
+    // hasilFinal += `<table class="table">`;
+
+    // hasilFinal += `<tr>
+    // <th>Penghasilan</th>
+    // <th>Aset</th>
+    // <th>Pengeluaran</th>
+    // <th>Status Masyarakat</th>
+    // <th>Jarak</th>
+    // </tr>`;
+
+    // for (let i = 0; i < k; i++) {
+    //   hasilFinal += `<tr>
+    //   <td>${hasilLearning[i][0]}</td>
+    //   <td>${hasilLearning[i][1]}</td>
+    //   <td>${hasilLearning[i][2]}</td>
+    //   <td>${hasilLearning[i][3]}</td>
+    //   <td>${hasilLearning[i][4]}</td>
+    //   </tr>`;
+    // }
+
+    // hasilFinal += `</table>`;
+    hasilFinal += `
     <h2>Hasil Learning</h2>
     <h2>Data Penghasilan: ${x1}</h2>
-    <h2>data Aset       : ${x2}</h2>
-    <h2>data Pengeluaran: ${x3}</h2>
+    <h2>Data Aset       : ${x2}</h2>
+    <h2>Data Pengeluaran: ${x3}</h2>
     <h2>Indikasi : ${hasil}</h2>
     `;
 
-    console.log(hasilLearning);
     container.innerHTML = hasilFinal;
   });
 });
