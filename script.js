@@ -155,7 +155,7 @@ btn.addEventListener('click', function () {
     <h2>Data Aset       : ${x2}</h2>
     <h2>Data Pengeluaran: ${x3}</h2>
     <h2>Indikasi : ${hasil}</h2>
-    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="tabelHasil">
     <span></span>
     <span></span>
     <span></span>

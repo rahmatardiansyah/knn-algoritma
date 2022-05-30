@@ -75,6 +75,10 @@ html {
     margin-top: 40px;
     letter-spacing: 4px
   }
+
+  a.tabelHasil {
+    margin-left: 83px;
+  }
   
  a:hover {
     background: #03e9f4;
@@ -169,3 +173,6 @@ a span:nth-child(2) {
   .modal-dialog {
     width: 100%;
   }
+  
+
+  
