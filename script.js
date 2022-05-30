@@ -19,16 +19,16 @@ btn.addEventListener('click', function () {
     formInput += `<div class="card-body ">
     <h5 class="">Data ${i}</h5>
     <div class="form-group">
-    
     <input type="input" class="form-control data-penghasilan" id="penghasilan" placeholder="Penghasilan"  />
+    <br>
   </div>
   <div class="form-group">
-    
-    <input type="input" class="form-control data-aset" id="aset"  placeholder="Aset" />
+  <input type="input" class="form-control data-aset" id="aset"  placeholder="Aset" />
+  <br>  
   </div>
   <div class="form-group">
-    
-    <input type="input" class="form-control data-pengeluaran" id="pengeluaran"  placeholder="Pengeluaran" />
+  <input type="input" class="form-control data-pengeluaran" id="pengeluaran"  placeholder="Pengeluaran" />
+  <br>  
   </div>
   <div class="form-group">
    
@@ -102,25 +102,32 @@ btn.addEventListener('click', function () {
     }
 
     let hasil = '';
-    // if (miskin > sedang) {
-    //   hasil = 'Miskin';
-    // } else if (miskin > kaya) {
-    //   hasil = 'Miskin';
-    // } else if (sedang > miskin) {
-    //   hasil = 'Sedang';
-    // } else if (sedang > kaya) {
-    //   hasil = 'Sedang';
-    // } else if (kaya > miskin) {
-    //   hasil = 'Kaya';
-    // } else {
-    //   hasil = 'Kaya';
-    // }
+    let status = Math.floor(Math.random() * 2) + 1;
+
     if (miskin > sedang && miskin > kaya) {
       hasil = 'Miskin';
     } else if (sedang > miskin && sedang > kaya) {
       hasil = 'Sedang';
-    } else {
+    } else if (kaya > miskin && kaya > sedang) {
       hasil = 'Kaya';
+    } else if (miskin == sedang) {
+      if (status == 1) {
+        hasil = 'Miskin';
+      } else {
+        hasil = 'Sedang';
+      }
+    } else if (sedang == kaya) {
+      if (status == 1) {
+        hasil = 'Sedang';
+      } else {
+        hasil = 'Kaya';
+      }
+    } else {
+      if (status == 1) {
+        hasil = 'Miskin';
+      } else {
+        hasil = 'Kaya';
+      }
     }
     loginBox.classList.add('login-box');
 
@@ -132,7 +139,7 @@ btn.addEventListener('click', function () {
     <h2>Indikasi : ${hasil}</h2>
     `;
 
-    container.innerHTML = hasilFinal;
     console.log(hasilLearning);
+    container.innerHTML = hasilFinal;
   });
 });
