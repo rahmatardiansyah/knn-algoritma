@@ -138,16 +138,6 @@ btn.addEventListener('click', function () {
 
     let hasilFinal = '';
 
-    // hasilFinal += `<table class="table">`;
-
-    // hasilFinal += `<tr>
-    // <th>Penghasilan</th>
-    // <th>Aset</th>
-    // <th>Pengeluaran</th>
-    // <th>Status Masyarakat</th>
-    // <th>Jarak</th>
-    // </tr>`;
-
     // for (let i = 0; i < k; i++) {
     //   hasilFinal += `<tr>
     //   <td>${hasilLearning[i][0]}</td>
@@ -165,8 +155,43 @@ btn.addEventListener('click', function () {
     <h2>Data Aset       : ${x2}</h2>
     <h2>Data Pengeluaran: ${x3}</h2>
     <h2>Indikasi : ${hasil}</h2>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    Tampilkan Tabel
+    </a>
     `;
 
     container.innerHTML = hasilFinal;
+
+    const modalBody = document.querySelector('.modal-body');
+
+    let tabel = '';
+
+    tabel += `<table class="table table-striped">`;
+
+    tabel += `<tr>
+    <th>Penghasilan</th>
+    <th>Aset</th>
+    <th>Pengeluaran</th>
+    <th>Status Masyarakat</th>
+    <th>Jarak</th>
+    </tr>`;
+
+    for (let i = 0; i < k; i++) {
+      tabel += `<tr>
+      <td>${hasilLearning[i][0]}</td>
+      <td>${hasilLearning[i][1]}</td>
+      <td>${hasilLearning[i][2]}</td>
+      <td>${hasilLearning[i][4]}</td>
+      <td>${hasilLearning[i][3].toFixed(2)}</td>
+      </tr>`;
+    }
+
+    tabel += `</table>`;
+
+    modalBody.innerHTML = tabel;
   });
 });

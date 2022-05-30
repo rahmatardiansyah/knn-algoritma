@@ -166,3 +166,6 @@ a span:nth-child(2) {
     }
   }
   
+  .modal-dialog {
+    width: 100%;
+  }
